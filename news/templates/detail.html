@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="w3-container w3-light-grey w3-padding-64">
+
+<!-- Content -->
+<div class="w3-row-padding">
+	<!-- News Detail -->
+	<div id="detail" class="w3-col m8">
+		<div class="w3-white w3-padding">
+			<div class="w3-xxlarge w3-opacity-min"><strong>{{ news.title }}</strong></div>
+			<div class="w3-panel">
+				<span>Published: {{ news.pub_date|timesince }} ago</span><hr />
+			</div>
+			<img src="{{ news.cover }}" style="width:100%">
+			<small>image from a nice author</small><br><br>
+			<div>
+				{{ news.content|safe }}
+			</div>
+		</div>
+	</div>
+	<aside class="w3-col m4">
+		<h4 class="w3-black w3-opacity-min w3-padding">LATEST NEWS</h4>
+		<ul class="w3-ul w3-card w3-margin-bottom">
+			{% for news in latest_news %}
+			<li class="w3-bar">
+				<a href="{% url 'detail' news.pk %}">{{ news.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+		<div class="w3-white w3-center w3-padding" style="height: 300px;">
+			adverts here
+		</div>
+		<h4 class="w3-black w3-opacity-min w3-padding">CATEGORIES</h4>
+    <ul class="w3-ul">
+      <li>Business</li>
+      <li>Health</li>
+      <li>Politics</li>
+      <li>Science</li>
+      <li>Sports</li>
+      <li>Technology</li>
+      <li>World</li>
+    </ul class="w3-ul">
+    <div class="w3-panel w3-blue w3-padding">
+      <i class="fa fa-facebook"></i> Follow us on facebook
+    </div>
+    <div class="w3-panel w3-blue w3-padding">
+      <i class="fa fa-twitter"></i> Follow us on twitter
+    </div>
+	</aside>
+</div>
+
+</div>
+
+{% endblock content %}

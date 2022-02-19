@@ -1,0 +1,9 @@
+<!-- Navbar -->
+<nav class="w3-bar w3-container w3-padding w3-black w3-opacity-min">
+  <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-margin-right"><span class="w3-tag w3-white"><b>TDT</b></span> The Django Times</a>
+  <div class="w3-middle w3-hide-small">
+    {% for category in categories %}
+    <a href="{% url 'category' category.pk %}" class="w3-margin-left w3-bar-item w3-button">{{ category.title }}</a>
+    {% endfor %}
+  </div>
+</nav>
